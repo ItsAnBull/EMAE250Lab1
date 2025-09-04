@@ -11,8 +11,8 @@ else
     mostPositive = max(ary) % row vector containing the max value of each column
 
     mostNegative = min(transpose(ary)); % row vector containing the min value of each row, which is done by transposing the matrix prior to calling min
-    % the flip command is used to reverse the order of the vector, then it is flipped again to become a column vector
-    mostNegative = transpose(flip(mostNegative))
+    % the flip command is used to reverse the order of the vector, then it
+    mostNegative = flip(mostNegative)
 
     firstValue = dot(mostPositive,mostNegative); % the first output value is the dot product of the vectors
 
@@ -52,11 +52,11 @@ else
     % START OF SECOND VECTOR TO BE DOTTED
 
     % Smallest magnitude term in each row
-    [M,I] = min(abs(transpose(ary))); % Use this syntax of the min function in order to store the data for the column numbers of the largest magnitudes of each row of the matrix
-    smallestMag = []; % define an empty column vector
+    [M,I] = min(abs(transpose(ary))); 
+    largestMag = []; % define an empty column vector
     % iterate for each column of the matrix
     for c=1:arySize(1)
-        smallestMag = cat(1,smallestMag,[ary(c,I(c))]); % concatenate to the bottom of column vector another column vector containing the column index from the variable I, and the row index from the for loop variable.
+        largestMag = cat(1,largestMag,[ary(c,I(c))]); % concatenate to the bottom of column vector another column vector containing the column index from the variable I, and the row index from the for loop variable. It
     end    
 
     % Diagonal term in each row
