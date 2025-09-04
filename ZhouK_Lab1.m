@@ -1,6 +1,6 @@
 function output = ZhouK_Lab1(ary)
 
-arySize = size(ary); % vector containing the size of the input array
+arySize = size(ary); % row vector containing the size of the input array
 
 % statement to set the output to 0 if the array isn't square
 if arySize(1)~=arySize(2);
@@ -57,7 +57,7 @@ else
     % iterate for each column of the matrix
     for c=1:arySize(1)
         smallestMag = cat(1,smallestMag,[ary(c,I(c))]); % concatenate to the bottom of column vector another column vector containing the column index from the variable I, and the row index from the for loop variable.
-    end    
+    end
 
     % Diagonal term in each row
     diagonalTerms = diag(ary);
@@ -77,7 +77,7 @@ else
     secondValue = dot(firstVec, secondVec); % the second output value is the dot product of the two vectors
 
     % END OF SECOND VECTOR TO BE DOTTED
-    
+
     % END OF SECOND OUTPUT VALUE
 
     %------------------------------------------------------------------------------------
@@ -88,9 +88,9 @@ else
 
     index = 1; % initialie the counter variable
 
-    % this while loop will only run when the matrix has not yet found to be not positive definite, or when the current size of the submatrix being checked is less than or equal to the size of the matrix itself
-    while (thirdValue || index <= arySize(1))
-        subMatrix = ary(1:index,1:index);
+    % this while loop will only run when the matrix has not yet found to be not positive definite and when the current size of the submatrix being checked is still less than or equal to the size of the entire matrix
+    while (thirdValue && index <= arySize(1))
+        subMatrix = ary(1:index,1:index); % iniitalize the submatrix
         if det(subMatrix) <= 0
             thirdValue = 0; % update the counter if the submatrix is not positive definite
         end
@@ -98,6 +98,8 @@ else
     end
 
     % END OF THIRD OUTPUT VALUE
+
+    %------------------------------------------------------------------------------------
 
     output = [firstValue; secondValue; thirdValue]; % Combine the output values into a single column vector
 
